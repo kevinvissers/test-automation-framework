@@ -8,7 +8,7 @@ class AttributeFetcher(driver: Driver) {
     private val elementFetcher = ElementFetcher(driver)
 
     fun isDisplayed(locator: By) = elementFetcher.waitForElement(locator).isDisplayed
-    fun getText(locator: By) = elementFetcher.waitForElement(locator).text
+    fun getText(locator: By): String = elementFetcher.waitForElement(locator).text
 
     fun exists(locator: By): Boolean {
         return try {
