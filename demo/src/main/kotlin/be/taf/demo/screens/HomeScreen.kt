@@ -8,11 +8,13 @@ import be.taf.dsl.core.TestBase
 import be.taf.web.driver.Driver
 import org.assertj.core.api.Assertions
 import org.openqa.selenium.By
+import org.openqa.selenium.remote.RemoteWebDriver
 
 /**
  * The Brightest homepage
  */
-class HomeScreen(private val driver: Driver) : BaseScreen(driver), INavigationBar by NavigationBar(driver) {
+class HomeScreen<T : RemoteWebDriver>(private val driver: Driver<T>) : BaseScreen<T>(driver),
+    INavigationBar<T> by NavigationBar(driver) {
 
     val brightestLogo: Image = By.xpath("//img[@alt='Brightest Logo']")
 
@@ -21,6 +23,6 @@ class HomeScreen(private val driver: Driver) : BaseScreen(driver), INavigationBa
     }
 }
 
-fun TestBase.homeScreen(f: HomeScreen.() -> Unit) = f(HomeScreen(driver))
+fun TestBase.homeScreen(f: HomeScreen<RemoteWebDriver>.() -> Unit) = f(HomeScreen(driver))
 
-fun Driver.homeScreen(f: HomeScreen.() -> Unit) = f(HomeScreen(this))
+fun <T : RemoteWebDriver> Driver<T>.homeScreen(f: HomeScreen<T>.() -> Unit) = f(HomeScreen(this))

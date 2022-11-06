@@ -5,8 +5,9 @@ import be.taf.web.driver.Driver
 import org.openqa.selenium.By
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.interactions.Actions
+import org.openqa.selenium.remote.RemoteWebDriver
 
-class ElementActions(private val driver: Driver) {
+class ElementActions<T : RemoteWebDriver>(private val driver: Driver<T>) {
     private val elementFetcher = ElementFetcher(driver)
 
     fun click(locator: By) = elementFetcher.waitForElement(locator).click()

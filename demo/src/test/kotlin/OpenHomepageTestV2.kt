@@ -11,13 +11,14 @@ import be.taf.dsl.chains.AssertionType.visible
 import be.taf.dsl.core.TestBaseV2
 import be.taf.dsl.utils.onSmallScreens
 import org.junit.jupiter.api.Test
+import org.openqa.selenium.chrome.ChromeDriver
 
 class OpenHomepageTestV2 : TestBaseV2() {
 
     @Test
     fun `Open solutions page`() {
 
-        usingWebBrowser {
+        usingWebBrowser<ChromeDriver> {
 
             browserHome {
                 `when` `I navigate to` "https://www.brightest.be/"
