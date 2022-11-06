@@ -35,6 +35,7 @@ class OpenHomepageTest : TestBase() {
 
         homeScreen {
             then element brightestLogo `should be` visible
+
             `when` `I select item` solutionsLabel
             then `I expect the screen` ::SolutionsScreen
         }
@@ -51,6 +52,6 @@ class OpenHomepageTest : TestBase() {
 
     @AfterEach
     fun teardown() {
-        driver.kill()
+        driver.close()
     }
 }

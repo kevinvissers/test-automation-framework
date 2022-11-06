@@ -4,7 +4,7 @@ import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.remote.RemoteWebDriver
 import java.time.Duration
 
-class Driver(driverSettings: DriverSettings) {
+class Driver(driverSettings: DriverSettings) : AutoCloseable {
     val driver: RemoteWebDriver =
         createDriver(driverSettings)
 
@@ -25,7 +25,7 @@ class Driver(driverSettings: DriverSettings) {
 
     fun asChromeDriver(): ChromeDriver = driver as ChromeDriver
 
-    fun kill() {
+    override fun close() {
         driver.quit()
     }
 }
