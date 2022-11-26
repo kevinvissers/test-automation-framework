@@ -1,5 +1,5 @@
 rootProject.name = 'TestAutomationFramework'
 include 'web-core'
-include 'mobile-core'
+include 'introduction'
 include 'dsl'
 include 'demo'
