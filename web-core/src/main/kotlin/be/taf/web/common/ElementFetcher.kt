@@ -3,11 +3,12 @@ package be.taf.web.common
 import be.taf.web.driver.Driver
 import org.openqa.selenium.By
 import org.openqa.selenium.WebElement
+import org.openqa.selenium.remote.RemoteWebDriver
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.WebDriverWait
 import java.time.Duration
 
-class ElementFetcher(private val driver: Driver) {
+class ElementFetcher<T : RemoteWebDriver>(private val driver: Driver<T>) {
     companion object {
         private const val TIMEOUT_IN_SECONDS = 15L
     }

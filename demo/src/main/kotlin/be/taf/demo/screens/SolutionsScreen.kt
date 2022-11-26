@@ -9,11 +9,12 @@ import be.taf.dsl.core.Label
 import be.taf.dsl.core.TestBase
 import be.taf.web.driver.Driver
 import org.openqa.selenium.By
+import org.openqa.selenium.remote.RemoteWebDriver
 
 /**
  * Brightest solutions screen
  */
-class SolutionsScreen(driver: Driver) : BaseScreen(driver) {
+class SolutionsScreen<T : RemoteWebDriver>(driver: Driver<T>) : BaseScreen<T>(driver) {
 
     val headerText: Label
         get() = By.cssSelector(".stm_titlebox__inner > h1")
@@ -26,6 +27,6 @@ class SolutionsScreen(driver: Driver) : BaseScreen(driver) {
     }
 }
 
-fun TestBase.solutionsScreen(f: SolutionsScreen.() -> Unit) = f(SolutionsScreen(driver))
+fun TestBase.solutionsScreen(f: SolutionsScreen<RemoteWebDriver>.() -> Unit) = f(SolutionsScreen(driver))
 
-fun Driver.solutionsScreen(f: SolutionsScreen.() -> Unit) = f(SolutionsScreen(this))
+fun <T : RemoteWebDriver> Driver<T>.solutionsScreen(f: SolutionsScreen<T>.() -> Unit) = f(SolutionsScreen(this))

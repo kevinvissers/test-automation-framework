@@ -1,13 +1,12 @@
 package be.taf.web.assertions
 
 import be.taf.web.common.AttributeFetcher
-import be.taf.web.common.ElementFetcher
 import be.taf.web.driver.Driver
 import org.assertj.core.api.Assertions
 import org.openqa.selenium.By
+import org.openqa.selenium.remote.RemoteWebDriver
 
-class ElementAssertions(driver: Driver) {
-    private val elementFetcher = ElementFetcher(driver)
+class ElementAssertions<T : RemoteWebDriver>(driver: Driver<T>) {
     private val attributeFetcher = AttributeFetcher(driver)
 
     fun verifyExistence(locator: By, shouldExist: Boolean) {
@@ -24,7 +23,5 @@ class ElementAssertions(driver: Driver) {
         } else {
             Assertions.assertThat(attributeFetcher.getText(locator)).isNotEqualTo(text)
         }
-
     }
-
 }
